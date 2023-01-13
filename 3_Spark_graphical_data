@@ -1,5 +1,7 @@
 
+
 sudo apt install scala
+
 scala -version
 
  wget https://dlcdn.apache.org/spark/spark-3.3.1/spark-3.3.1-bin-hadoop3.tgz
@@ -21,12 +23,14 @@ source ~/.bashrc
 
 start-master.sh
 
+http://localhost:8080/
+
 spark://Ubuntu.virtualbox.org:7077
 
 $ start-worker.sh spark://Ubuntu.virtualbox.org:7077
 
 
-
+spark-shell
 
 # Entering graphical data in spark shell
 #creating graphical data in graphx
@@ -49,4 +53,3 @@ socialgraph.numEdges
 socialgraph.numVertices
 socialgraph.inDegrees.collect
 socialgraph.outDegrees.collect
-
