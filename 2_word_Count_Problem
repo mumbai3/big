@@ -1,0 +1,17 @@
+javac -classpath hadoop-core-1.2.1.jar -d wordcountproblem WC_Mapper.java WC_Reducer.java WC_Runner.java
+
+jar -cvf wordcountproblem.jar -C wordcountproblem /
+
+nano data.txt
+start-dfs.sh
+start-yarn.sh
+
+*Uploading file to Hadoop*
+1.	Go to http://localhost:9870/ > click on utilities > Browse the file system
+2.	Click on create a new folder and enter name as ‘test’
+3.	Enter the created folder > click on upload button beside the create new folder button > Locate the created text file and open it
+
+
+hadoop jar wordcountproblemjar com.wordcountproblem.WC_Runner /test/data.txt/r_output
+
+hdfs dfs -cat /r_output/part-00000
