@@ -39,8 +39,11 @@ source ~/.bashrc
 readlink -f /usr/bin/javac
 sudo nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 
+
+export HADOOP_SSH_OPTS="-p 22"
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 export HADOOP_CLASSPATH+=" $HADOOP_HOME/lib/*.jar"
+
 cd /usr/local/hadoop/lib
 sudo wget https://jcenter.bintray.com/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar
 hadoop version
@@ -55,7 +58,7 @@ sudo nano $HADOOP_HOME/etc/hadoop/core-site.xml
 <value>hdfs://0.0.0.0:9000</value>
 <description>The default file system URI</description>
 </property>
-
+</configuration>
 
 sudo mkdir -p /home/hadoop/hdfs/{namenode,datanode}
 sudo chown -R hadoop:hadoop /home/hadoop/hdfs
@@ -120,6 +123,13 @@ sudo nano $HADOOP_HOME/etc/hadoop/yarn-site.xml
 </property>
 </configuration>
 
+hdfs namenode -format
+start-dfs.sh
+start-yarn.sh
+jps
+
+http://localhost:9870
+http:localhost:8080
 
 
 
@@ -127,8 +137,6 @@ sudo nano $HADOOP_HOME/etc/hadoop/yarn-site.xml
 
 
 
-
-</configuration>
 
 
 
